@@ -5,11 +5,13 @@
 It use [hello.js](https://adodson.com/hello.js/) for simplify get data on social network
 
 ### Check if profile is really exists on social network (via server side)
-* [ ] #2
+* [ ] https://github.com/joehua87/easy-auth-api/issues/2
 
-### Store user to database
-* If the user is not exists -> create new (from profile data get from social network) -> return token
-* If the user is exists -> return token
+### Store user to database if not exists
+* Create new from profile data get from social network
+* Check duplicated user via `profiles[network].profile.email`
+
+### Return the jwt token
 
 ## Client side example for facebook auth
 ```js
