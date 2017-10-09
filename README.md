@@ -1,41 +1,32 @@
-# node-starter
+# easy-auth-api
 
-## Why?
-I see it's hard & time consuming when deploy node app into production docker, especially with `npm install`
+## Summary
+### Get token / basic profile on client side
+It use [hello.js](https://adodson.com/hello.js/) for simplify get data on social network
 
-## Features
-### Node.js preconfig
-* Babel (https://github.com/babel/babel)
-* nyc test coverage
-* Flow type
+### Check if profile is really exists on social network (via server side)
+* [ ] #2
 
-### Fast Docker Build
-* Cache yarn (Credit to: https://github.com/mfornasa/DockerYarn.git)
-* Reduce docker image size by only installing production dependencies
-* Leverage code rebuild:
+### Store user to database
+* If the user is not exists -> create new (from profile data get from social network) -> return token
+* If the user is exists -> return token
 
-## How it works
-* build src => lib
-* install production dependencies only in docker (use strategy in [this article](https://hackernoon.com/using-yarn-with-docker-c116ad289d56#.xwhb27ke5) to leverage cache)
-* copy lib & package.json into docker
+## Client side example for facebook auth
+```js
+await hello('facebook').login({
+  scope: 'email',
+})
+const auth = hello.getAuthResponse('facebook')
+const profile = await hello('facebook').api('me')
+const payload = { auth, profile }
+const response = await request({
+  url: 'auth.example.com/auth',
+  method: 'post',
+  data: payload,
+})
+const { token } = response.data
+window.localStorage.setItem('token', token)
+```
 
-## How it cache
-* If you don't change dependencies (for example: `yarn add ...`) => it just build `src => lib` & copy the `lib` directory into docker. Building time is same as normal `npm build`
-* It you change devDependencies => it works like statement above
-* If you change dependencies, it will **leverage yarn-cache** and only install the dependency you just add. And it's just **take some seconds** to do this
-
-## Requirement
-* Node.js
-* Docker
-
-## Getting started
-* `git clone https://github.com/joehua87/node-starter.git`
-* `yarn`
-* `./build.sh`
-* Test that it's work properly:
-`docker run --rm joehua/node-starter node lib/bin/run.js`
-* Modify src/bin/run.js
-* `./build.sh`
-* Run this again:
-`docker run --rm joehua/node-starter node lib/bin/run.js`
-* You will see that the image is up to date, and **build time** is blazing fast
+## Credit
+* https://ole.michelsen.dk/blog/social-signin-spa-jwt-server.html
