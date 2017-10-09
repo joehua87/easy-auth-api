@@ -1,0 +1,24 @@
+{
+  "auth": {
+    "state": "",
+    "access_token": "EAAEIc9NsiB4BAO30nhniXjOYJgnxli215wf1X7PQQcnAyLHsIen65qdhcXJWI95dsqxHT2NgjZBzGysZBZBZAzKiGvsaVZBaO968jlbKyfoZCZBO2fO93zaJOR3GxW24DgIHn4sxDBJ3hKk2ngsYFWYHAFmGkJAZCbp7mTVZA34m2Tpf92m1jxXY8tAy3GBj4BnZAlrBd6Tpd6NgZDZD",
+    "expires_in": 5802,
+    "client_id": "290768538077214",
+    "network": "facebook",
+    "display": "popup",
+    "redirect_uri": "http://auth.connected.com.vn:3000/login",
+    "scope": "basic,email",
+    "expires": 1507543201.343
+  },
+  "profile": {
+    "email": "hcc1512@gmail.com",
+    "first_name": "Hua",
+    "last_name": "Chau",
+    "name": "Hua Chi Chau",
+    "timezone": 7,
+    "verified": true,
+    "id": "10212740983993206",
+    "picture": "https://graph.facebook.com/10212740983993206/picture",
+    "thumbnail": "https://graph.facebook.com/10212740983993206/picture"
+  }
+}
